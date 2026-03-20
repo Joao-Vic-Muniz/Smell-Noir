@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Tenor+Sans&display=swap');
+/*
+Fonte de título e texto
+*/
+
+@import "tailwindcss";
+
+@theme {
+
+  --font-title: "Cormorant Garamond", serif;
+  --font-text: "Tenor Sans", sans-serif;
+
+  --color-bg: #0F0F0F;           /* Fundo Profundo */
+  --color-card: #1A1A1A;         /* Cards e Seções */
+  --color-accent: #262626;       /* Inputs e Bordas */
+  
+  --color-gold: #C5A059;         /* Destaque Principal (Ouro) */
+  --color-button: #A68546;       /* Hover dos Botões */
+  
+  --color-primary: #E5E5E5;      /* Texto Principal */
+  --color-secondary: #A1A1AA;    /* Texto Secundário/Legendas */
+}
