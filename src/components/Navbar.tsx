@@ -1,6 +1,19 @@
+import { useState, useEffect } from 'react'
+
 export default function Navbar() {
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50)
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <nav className="w-full h-20 flex flex-row items-center justify-between px-12 fixed top-0 z-50 bg-transparent">
+        <nav className={`fixed top-0 left-0 w-full h-20 z-50 transition-all duration-500 flex items-center justify-between px-12 
+            ${isScrolled ? 'bg-bg/80 backdrop-blur-md border-b border-accent/20' : 'bg-transparent'}`}>
 
             <div className="flex-1 flex justify-start">
                 <h2 className="font-title text-primary text-3xl cursor-pointer hover:text-gold transition-all duration-300 italic">

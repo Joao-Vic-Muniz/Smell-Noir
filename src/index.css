@@ -20,3 +20,8 @@ Fonte de título e texto
   --color-primary: #E5E5E5;      /* Texto Principal */
   --color-secondary: #A1A1AA;    /* Texto Secundário/Legendas */
 }
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}

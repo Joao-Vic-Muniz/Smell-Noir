@@ -1,5 +1,8 @@
 import Navbar from './components/Navbar'
+
 import Home from './pages/Home'
+import Catalog from './pages/Catalog'
+import About from './pages/About'
 
 export default function App() {
   return (
@@ -9,6 +12,8 @@ export default function App() {
       
       <main>
         <Home />
+        <Catalog />
+        <About />
       </main>
 
     </div>
