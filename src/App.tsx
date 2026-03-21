@@ -7,7 +7,7 @@ import About from './pages/About'
 
 export default function App() {
   return (
-    <div className="bg-bg min-h-screen">
+    <div className="bg-bg min-h-screen overflow-x-hidden">
 
       <Navbar />
       

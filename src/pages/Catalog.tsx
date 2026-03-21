@@ -63,15 +63,14 @@ export default function Catalog() {
     const prev = () => setIndex((prev) => (prev - 1 + PERFUMES.length) % PERFUMES.length);
 
     return (
-        <section id="catalog" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center pt-24 pb-12 px-6 md:px-16">
+        <section id="catalog" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center pt-20 pb-12 px-6 md:px-16">
             
-            {/* Background Effects */}
             <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full pointer-events-none animate-pulse"></div>
             <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent/20 blur-[130px] rounded-full pointer-events-none"></div>
 
-            <div className="relative z-10 w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="relative z-10 w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-center">
                 
-                <div className="lg:col-span-7 flex justify-center items-center h-[500px] md:h-[750px] relative">
+                <div className="lg:col-span-7 flex justify-center items-center h-[350px] md:h-[750px] relative">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={PERFUMES[index].id}
@@ -84,11 +83,11 @@ export default function Catalog() {
                             <motion.img
                                 src={PERFUMES[index].image}
                                 alt={PERFUMES[index].name}
-                                animate={{ y: [0, -20, 0] }}
+                                animate={{ y: [0, -15, 0] }}
                                 transition={{ 
                                     y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                                 }}
-                                className="max-h-[90%] w-auto object-contain drop-shadow-[0_50px_80px_rgba(0,0,0,0.9)] z-20"
+                                className="max-h-[100%] w-auto object-contain drop-shadow-[0_50px_80px_rgba(0,0,0,0.9)] z-20"
                             />
                             <div className="absolute w-[70%] h-[70%] bg-gold/10 blur-[120px] rounded-full -z-10"></div>
                         </motion.div>
@@ -104,40 +103,39 @@ export default function Catalog() {
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <span className="text-gold font-text tracking-widest text-xl mb-8 block opacity-70">
+                            <span className="text-gold font-text tracking-widest text-xs md:text-xl mb-4 md:mb-8 block opacity-70">
                                 {PERFUMES[index].essence}
                             </span>
                             
-                            <h2 className="text-primary font-title text-6xl md:text-8xl xl:text-9xl italic leading-[0.85] mb-6">
+                            <h2 className="text-primary font-title text-4xl md:text-8xl xl:text-9xl italic leading-[0.85] mb-4 md:mb-6">
                                 {PERFUMES[index].name}
                             </h2>
                             
-                            <p className="text-gold/50 font-text text-xl uppercase tracking-[0.5em] mb-10 pl-1">
+                            <p className="text-gold/50 font-text text-[14px] md:text-xl uppercase tracking-[0.5em] mb-6 md:mb-10 pl-1">
                                 {PERFUMES[index].brand}
                             </p>
 
-                            <p className="text-secondary font-text text-lg md:text-xl max-w-lg leading-relaxed mb-14 opacity-80 border-l border-gold/20 pl-6">
+                            <p className="text-secondary font-text text-sm md:text-xl max-w-lg leading-relaxed mb-8 md:mb-14 opacity-80 border-l border-gold/20 pl-4 md:pl-6">
                                 {PERFUMES[index].description}
                             </p>
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* NAVEGAÇÃO */}
-                    <div className="flex items-center gap-12">
-                        <button onClick={prev} className="group p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold hover:scale-110 active:scale-95">
-                            <svg className="w-6 h-6 stroke-secondary group-hover:stroke-gold transition-colors" fill="none" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-6 md:gap-12">
+                        <button onClick={prev} className="group p-4 md:p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 stroke-secondary group-hover:stroke-gold" fill="none" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7"/>
                             </svg>
                         </button>
                         
                         <div className="flex flex-col items-center">
-                            <span className="text-gold font-title italic text-4xl leading-none">0{index + 1}</span>
-                            <div className="w-10 h-[1px] bg-accent/40 my-3"></div>
-                            <span className="text-secondary/30 font-text text-[10px] tracking-widest uppercase italic">Essence</span>
+                            <span className="text-gold font-title italic text-2xl md:text-4xl leading-none">0{index + 1}</span>
+                            <div className="w-8 md:w-10 h-[1px] bg-accent/40 my-2 md:my-3"></div>
+                            <span className="text-secondary/30 font-text text-[8px] md:text-[10px] tracking-widest uppercase italic">Essence</span>
                         </div>
 
-                        <button onClick={next} className="group p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold hover:scale-110 active:scale-95">
-                            <svg className="w-6 h-6 stroke-secondary group-hover:stroke-gold transition-colors" fill="none" viewBox="0 0 24 24">
+                        <button onClick={next} className="group p-4 md:p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 stroke-secondary group-hover:stroke-gold" fill="none" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7"/>
                             </svg>
                         </button>
