@@ -1,31 +1,59 @@
+import { motion } from 'framer-motion';
+
 export default function About() {
     return (
-        <section id="about" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center py-24 px-6">
-            {/* Mancha de fundo contrastante */}
-            <div className="absolute bottom-[10%] left-[-5%] w-[600px] h-[600px] bg-accent/30 blur-[150px] rounded-full pointer-events-none"></div>
+        <section id="about" className="relative w-full min-h-screen bg-bg flex flex-col items-center justify-center py-32 px-6">
+            
+            {/* Fundo */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 blur-[160px] rounded-full pointer-events-none"></div>
 
-            <div className="relative z-10 max-w-4xl flex flex-col items-center text-center">
-                <div className="w-px h-24 bg-gradient-to-b from-transparent to-gold mb-12"></div>
-                
-                <h2 className="text-primary font-title text-6xl md:text-8xl italic mb-10 leading-tight">
-                    A Arte de Transformar <br /> Noite em Essência
-                </h2>
+            <div className="relative z-10 max-w-5xl w-full">
+                {/* Cabeçalho */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-24"
+                >
+                    <span className="text-gold font-text tracking-[0.3em] text-2xl mb-6 block">A Essência do Instinto</span>
+                    <h2 className="text-primary font-title text-6xl md:text-8xl italic leading-tight font-bold">
+                        Onde a Noite se torna<br />  Eterna
+                    </h2>
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12 text-left">
-                    <p className="text-secondary font-text text-lg leading-relaxed">
-                        Nascida sob o véu do mistério, a <span className="text-gold italic">Smell Noir</span> não cria apenas perfumes. Nós capturamos momentos efêmeros e os transformamos em memórias olfativas inesquecíveis, onde cada nota conta uma história de poder e elegância.
-                    </p>
-                    <p className="text-secondary font-text text-lg leading-relaxed">
-                        Nossa curadoria utiliza as matérias-primas mais raras do mundo, combinando o artesanato tradicional francês com a ousadia da modernidade. Para quem sabe que o silêncio e a presença andam juntos na escuridão.
-                    </p>
-                </div>
+                {/* Conteúdo */}
+                <div className="grid md:grid-cols-2 gap-16 lg:gap-32 items-start">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <h3 className="text-gold font-title text-3xl italic mb-6">Nossa Herança</h3>
+                        <p className="text-secondary font-text text-lg leading-relaxed opacity-80">
+                            A <span className="text-primary italic">Smell Noir</span> nasceu do desejo de capturar o efêmero. Não somos apenas uma curadoria de fragrâncias; somos guardiões de memórias olfativas. Cada frasco em nossa coleção é escolhido para representar um capítulo de poder, mistério e sofisticação absoluta.
+                        </p>
+                    </motion.div>
 
-                <div className="mt-16 flex items-center gap-6">
-                    <div className="w-12 h-px bg-gold/50"></div>
-                    <span className="text-gold font-title italic text-2xl tracking-wide">Since 2026</span>
-                    <div className="w-12 h-px bg-gold/50"></div>
+                    <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        <h3 className="text-gold font-title text-3xl italic mb-6">A Curadoria</h3>
+                        <p className="text-secondary font-text text-lg leading-relaxed opacity-80">
+                            Trabalhamos exclusivamente com as <span className="italic">maisons</span> mais prestigiadas do mundo. Nossa busca nos leva a essências raras, de orquídeas negras a âmbares milenares, garantindo que sua presença seja sentida muito antes de qualquer palavra ser dita.
+                        </p>
+                        
+                        {/* Detalhe */}
+                        <div className="mt-12 flex items-center gap-4">
+                            <div className="h-[1px] w-12 bg-gold/50"></div>
+                            <span className="text-gold font-title italic text-xl">Instinto & Sofisticação</span>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
-    )
+    );
 }

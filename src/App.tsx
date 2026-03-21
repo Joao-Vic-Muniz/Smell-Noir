@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import BrandMarquee from './components/BrandMarquee'
 
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
@@ -13,6 +14,7 @@ export default function App() {
       <main>
         <Home />
         <Catalog />
+        <BrandMarquee />
         <About />
       </main>
 
