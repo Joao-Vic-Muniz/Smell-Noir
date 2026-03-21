@@ -56,14 +56,14 @@ const PERFUMES = [
     }
 ];
 
-export default function Catalog() {
+export default function Popular() {
     const [index, setIndex] = useState(0);
 
     const next = () => setIndex((prev) => (prev + 1) % PERFUMES.length);
     const prev = () => setIndex((prev) => (prev - 1 + PERFUMES.length) % PERFUMES.length);
 
     return (
-        <section id="catalog" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center pt-20 pb-12 px-6 md:px-16">
+        <section id="popular" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center pt-20 pb-12 px-6 md:px-16">
             
             <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full pointer-events-none animate-pulse"></div>
             <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent/20 blur-[130px] rounded-full pointer-events-none"></div>

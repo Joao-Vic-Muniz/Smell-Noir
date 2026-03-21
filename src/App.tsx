@@ -2,8 +2,8 @@ import Navbar from './components/Navbar'
 import BrandMarquee from './components/BrandMarquee'
 
 import Home from './pages/Home'
-import Catalog from './pages/Catalog'
 import About from './pages/About'
+import Popular from './pages/Popular'
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
       
       <main>
         <Home />
-        <Catalog />
+        <Popular />
         <BrandMarquee />
         <About />
       </main>

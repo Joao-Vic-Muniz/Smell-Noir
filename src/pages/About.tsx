@@ -19,15 +19,15 @@ export default function About() {
         >
             <motion.h2 
                 style={{ x: xLeft }}
-                className="absolute top-10 left-0 text-[12rem] md:text-[20rem] font-title italic text-gold/5 whitespace-nowrap leading-none select-none"
+                className="absolute top-10 left-64 text-[10rem] md:text-[16rem] font-title italic text-gold/5 whitespace-nowrap leading-none select-none"
             >
                 INSTINTO SELVAGEM
             </motion.h2>
             <motion.h2 
                 style={{ x: xRight }}
-                className="absolute bottom-20 right-0 text-[12rem] md:text-[20rem] font-title italic text-gold/5 whitespace-nowrap leading-none select-none"
+                className="absolute bottom-20 right-52 text-[12rem] md:text-[16rem] font-title italic text-gold/5 whitespace-nowrap leading-none select-none"
             >
-                SOFISTICAÇÃO PURA
+                ELEGÂNCIA PURA
             </motion.h2>
 
             <div className="relative z-10 max-w-7xl w-full flex flex-col gap-40">
@@ -52,7 +52,7 @@ export default function About() {
                         className="text-primary font-title text-7xl md:text-[12rem] italic leading-[0.8] mb-12"
                     >
                         Onde a Noite se torna <br /> 
-                        <span className="text-gold not-italic font-bold">Inesquecível</span>.
+                        <span className="text-gold not-italic font-bold">Inesquecível</span>
                     </motion.h2>
                 </div>
 

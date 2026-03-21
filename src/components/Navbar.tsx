@@ -24,7 +24,7 @@ export default function Navbar() {
             <div className="hidden md:flex flex-row items-center gap-12">
     {[
         { name: "Início", href: "#home" },
-        { name: "Catálogo", href: "#catalog" },
+        { name: "Popular", href: "#popular" },
         { name: "Sobre nós", href: "#about" },
         { name: "Contato", href: "#contact" }
     ].map((link) => (
