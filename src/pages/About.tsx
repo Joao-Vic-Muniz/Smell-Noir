@@ -1,12 +1,8 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function About() {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
+    const containerRef = useRef<HTMLDivElement>(null);
 
     return (
         <section 
@@ -23,6 +19,7 @@ export default function About() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.5 }}
+                        viewport={{ once: true }}
                         className="mb-12"
                     >
                         <div className="w-20 h-[2px] bg-gold mx-auto mb-8"></div>
@@ -35,6 +32,7 @@ export default function About() {
                         initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
+                        viewport={{ once: true }}
                         className="text-primary font-title text-5xl md:text-[10rem] italic leading-[0.9] mb-12 tracking-tighter"
                     >
                         Onde a Noite se torna <br /> 
@@ -47,6 +45,7 @@ export default function About() {
                         initial={{ opacity: 0, x: -100 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }}
+                        viewport={{ once: true }}
                         className="relative group"
                     >
                         <div className="absolute -inset-4 border border-gold/20 rounded-2xl group-hover:border-gold/50 transition-colors duration-700"></div>
@@ -63,6 +62,7 @@ export default function About() {
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
+                        viewport={{ once: true }}
                         className="space-y-12"
                     >
                         <h3 className="text-gold font-title text-4xl md:text-5xl italic">A Curadoria</h3>
@@ -87,6 +87,7 @@ export default function About() {
                 <motion.div 
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     className="flex flex-col items-center py-20"
                 >
                     <motion.div 
