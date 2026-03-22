@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 
-// Imports das imagens
-import blackOrchid from '../assets/Black Orchid.webp'
-import babycat from '../assets/Babycat.png'
-import aventus from '../assets/Aventus.png'
-import herod from '../assets/Herod.webp'
-import baccarat from '../assets/Baccarat.png'
+import blackOrchid from '../assets/Black Orchid.webp';
+import babycat from '../assets/Babycat.png';
+import aventus from '../assets/Aventus.png';
+import herod from '../assets/Herod.webp';
+import baccarat from '../assets/Baccarat.png';
 
 const PERFUMES = [
     {
         id: 1,
         name: "Black Orchid",
         brand: "Tom Ford",
+        color: "from-purple-900/40",
+        accent: "text-purple-400",
+        glow: "bg-purple-500/20",
         essence: "Especiarias • Floral Escuro",
-        description: "Uma colisão magnética de orquídeas negras e especiarias raras. A personificação do mistério absoluto e da elegância que não pede licença.",
+        description: "Uma colisão magnética de orquídeas negras e especiarias raras. A personificação do mistério absoluto.",
         image: blackOrchid,
         scale: 0.85 
     },
@@ -22,8 +25,11 @@ const PERFUMES = [
         id: 2,
         name: "Babycat",
         brand: "YSL",
+        color: "from-amber-900/40",
+        accent: "text-amber-500",
+        glow: "bg-amber-500/20",
         essence: "Camurça • Baunilha • Incenso",
-        description: "Uma interpretação indomável. Onde o calor da baunilha encontra o perigo do incenso em um rastro cinematográfico e selvagem.",
+        description: "Uma interpretação indomável. Onde o calor da baunilha encontra o perigo do incenso selvagem.",
         image: babycat,
         scale: 1.05
     },
@@ -31,8 +37,11 @@ const PERFUMES = [
         id: 3,
         name: "Aventus",
         brand: "Creed",
+        color: "from-blue-900/40",
+        accent: "text-blue-400",
+        glow: "bg-blue-500/20",
         essence: "Bétula • Abacaxi • Couro",
-        description: "A essência do triunfo. Uma alquimia poderosa desenhada para quem escreve sua própria história com confiança e vigor.",
+        description: "A essência do triunfo. Uma alquimia poderosa desenhada para quem escreve sua própria história.",
         image: aventus,
         scale: 1.0
     },
@@ -40,8 +49,11 @@ const PERFUMES = [
         id: 4,
         name: "Herod",
         brand: "Parfums de Marly",
+        color: "from-red-900/40",
+        accent: "text-red-500",
+        glow: "bg-red-600/20",
         essence: "Tabaco • Canela • Baunilha",
-        description: "Uma ode à herança da alta perfumaria. Quente, enfumaçado e majestoso; um eco de sofisticação que atravessa séculos.",
+        description: "Uma ode à herança da alta perfumaria. Quente, enfumaçado e majestoso como um eco de sofisticação.",
         image: herod,
         scale: 0.85
     },
@@ -49,8 +61,11 @@ const PERFUMES = [
         id: 5,
         name: "Baccarat Rouge",
         brand: "Maison Francis Kurkdjian",
+        color: "from-rose-900/40",
+        accent: "text-rose-500",
+        glow: "bg-rose-500/20",
         essence: "Âmbar • Jasmim • Açafrão",
-        description: "Luminoso e denso. Uma assinatura olfativa poética que flutua sobre a pele como um cristal lapidado pelo sol da meia-noite.",
+        description: "Luminoso e denso. Uma assinatura olfativa poética que flutua como um cristal sob o sol da meia-noite.",
         image: baccarat,
         scale: 1.0
     }
@@ -63,85 +78,128 @@ export default function Popular() {
     const prev = () => setIndex((prev) => (prev - 1 + PERFUMES.length) % PERFUMES.length);
 
     return (
-        <section id="popular" className="relative w-full min-h-screen bg-bg overflow-hidden flex items-center justify-center pt-20 pb-12 px-6 md:px-16">
+        <section id="popular" className="relative w-full min-h-screen bg-[#030303] overflow-hidden flex items-center justify-center py-32 px-6 md:px-20 transition-colors duration-1000">
             
-            <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full pointer-events-none animate-pulse"></div>
-            <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent/20 blur-[130px] rounded-full pointer-events-none"></div>
+            <AnimatePresence mode="wait">
+                <motion.div 
+                    key={`bg-${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.5 }}
+                    className={`absolute inset-0 bg-gradient-to-tr ${PERFUMES[index].color} to-transparent pointer-events-none`}
+                />
+            </AnimatePresence>
 
-            <div className="relative z-10 w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-center">
+            <div className="absolute inset-0 z-[1] opacity-[0.06] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            
+            <AnimatePresence mode="wait">
+                <motion.div 
+                    key={`glow-${index}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 1.2, opacity: 0 }}
+                    transition={{ duration: 1.2 }}
+                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] ${PERFUMES[index].glow} blur-[180px] rounded-full pointer-events-none`}
+                />
+            </AnimatePresence>
+
+            <div className="relative z-10 w-full max-w-screen-2xl grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 
-                <div className="lg:col-span-7 flex justify-center items-center h-[350px] md:h-[750px] relative">
+                <div className="lg:col-span-6 flex justify-center items-center h-[500px] md:h-[850px] relative">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={PERFUMES[index].id}
-                            initial={{ opacity: 0, scale: 0.7, x: -100, rotate: -5 }}
-                            animate={{ opacity: 1, scale: PERFUMES[index].scale, x: 0, rotate: 0 }}
-                            exit={{ opacity: 0, scale: 0.7, x: 100, rotate: 5 }}
-                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative w-full h-full flex items-center justify-center"
+                            initial={{ opacity: 0, scale: 0.5, rotateY: -90, filter: "blur(10px)" }}
+                            animate={{ opacity: 1, scale: PERFUMES[index].scale, rotateY: 0, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, scale: 1.2, rotateY: 90, filter: "blur(20px)" }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative w-full h-full flex items-center justify-center perspective-[2000px]"
                         >
                             <motion.img
                                 src={PERFUMES[index].image}
                                 alt={PERFUMES[index].name}
-                                animate={{ y: [0, -15, 0] }}
-                                transition={{ 
-                                    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                                animate={{ 
+                                    y: [0, -30, 0],
+                                    rotateZ: [-1, 1, -1]
                                 }}
-                                className="max-h-[100%] w-auto object-contain drop-shadow-[0_50px_80px_rgba(0,0,0,0.9)] z-20"
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                                className="max-h-[95%] w-auto object-contain drop-shadow-[0_80px_120px_rgba(0,0,0,1)] z-20"
                             />
-                            <div className="absolute w-[70%] h-[70%] bg-gold/10 blur-[120px] rounded-full -z-10"></div>
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
-                <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="lg:col-span-6 flex flex-col items-center lg:items-start">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={PERFUMES[index].id}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="w-full"
                         >
-                            <span className="text-gold font-text tracking-widest text-xs md:text-xl mb-4 md:mb-8 block opacity-70">
-                                {PERFUMES[index].essence}
-                            </span>
+                            <div className="flex items-center gap-3 mb-8">
+                                <Sparkles className={`${PERFUMES[index].accent} w-6 h-6 animate-pulse`} />
+                                <span className={`font-text tracking-[0.5em] text-xl md:text-2xl uppercase font-bold ${PERFUMES[index].accent}`}>
+                                    {PERFUMES[index].brand}
+                                </span>
+                            </div>
                             
-                            <h2 className="text-primary font-title text-4xl md:text-8xl xl:text-9xl italic leading-[0.85] mb-4 md:mb-6">
+                            <h2 className="text-white font-title text-7xl md:text-[11rem] italic leading-[0.75] mb-10 tracking-tighter drop-shadow-2xl">
                                 {PERFUMES[index].name}
                             </h2>
                             
-                            <p className="text-gold/50 font-text text-[14px] md:text-xl uppercase tracking-[0.5em] mb-6 md:mb-10 pl-1">
-                                {PERFUMES[index].brand}
-                            </p>
-
-                            <p className="text-secondary font-text text-sm md:text-xl max-w-lg leading-relaxed mb-8 md:mb-14 opacity-80 border-l border-gold/20 pl-4 md:pl-6">
+                            <p className="text-gray-300 font-text text-2xl md:text-4xl leading-tight mb-12 max-w-2xl border-l-4 border-white/10 pl-10 italic opacity-80">
                                 {PERFUMES[index].description}
                             </p>
+
+                            <div className="flex flex-wrap gap-4 mb-20">
+                                {PERFUMES[index].essence.split(' • ').map((tag) => (
+                                    <span key={tag} className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white font-text text-lg uppercase tracking-widest">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </motion.div>
                     </AnimatePresence>
 
-                    <div className="flex items-center gap-6 md:gap-12">
-                        <button onClick={prev} className="group p-4 md:p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold">
-                            <svg className="w-5 h-5 md:w-6 md:h-6 stroke-secondary group-hover:stroke-gold" fill="none" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7"/>
-                            </svg>
+                    <div className="flex items-center gap-12">
+                        <button 
+                            onClick={prev} 
+                            className="group p-8 border-2 border-white/5 rounded-2xl transition-all duration-500 hover:border-white/40 hover:bg-white/5 active:scale-90"
+                        >
+                            <ChevronLeft size={40} className="text-white group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                         </button>
                         
-                        <div className="flex flex-col items-center">
-                            <span className="text-gold font-title italic text-2xl md:text-4xl leading-none">0{index + 1}</span>
-                            <div className="w-8 md:w-10 h-[1px] bg-accent/40 my-2 md:my-3"></div>
-                            <span className="text-secondary/30 font-text text-[8px] md:text-[10px] tracking-widest uppercase italic">Essence</span>
+                        <div className="relative flex items-center justify-center w-24 h-24">
+                            <motion.div 
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 border-t-2 border-r-2 border-white/10 rounded-full"
+                            />
+                            <span className="text-white font-title italic text-5xl">0{index + 1}</span>
                         </div>
 
-                        <button onClick={next} className="group p-4 md:p-6 border border-accent/20 rounded-full transition-all duration-500 hover:border-gold">
-                            <svg className="w-5 h-5 md:w-6 md:h-6 stroke-secondary group-hover:stroke-gold" fill="none" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7"/>
-                            </svg>
+                        <button 
+                            onClick={next} 
+                            className="group p-8 border-2 border-white/5 rounded-2xl transition-all duration-500 hover:border-white/40 hover:bg-white/5 active:scale-90"
+                        >
+                            <ChevronRight size={40} className="text-white group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                         </button>
                     </div>
                 </div>
             </div>
+
+            <motion.h3 
+                key={`label-${index}`}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 0.03, x: 0 }}
+                className="absolute -bottom-16 right-12 text-[18rem] font-title italic text-white whitespace-nowrap pointer-events-none select-none uppercase"
+            >
+                {PERFUMES[index].name}
+            </motion.h3>
         </section>
     );
 }
