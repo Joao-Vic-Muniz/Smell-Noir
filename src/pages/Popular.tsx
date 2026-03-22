@@ -196,7 +196,7 @@ export default function Popular() {
                 key={`label-${index}`}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 0.03, x: 0 }}
-                className="absolute -bottom-16 right-12 text-[18rem] font-title italic text-white whitespace-nowrap pointer-events-none select-none uppercase"
+                className="absolute -bottom-6 md:-bottom-12 right-6 md:right-12 text-6xl md:text-[10rem] font-title italic text-white whitespace-nowrap pointer-events-none select-none uppercase tracking-tighter"
             >
                 {PERFUMES[index].name}
             </motion.h3>
